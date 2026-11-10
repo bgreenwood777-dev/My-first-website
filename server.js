@@ -159,6 +159,6 @@ app.get('/admin.js', requireAdmin, (req, res) => {
 app.use('/api', (req, res) => res.status(404).json({ ok: false, error: 'Not found.' }));
 
 app.listen(PORT, () => {
-  console.log(`Summit Heating & Air website running at http://localhost:${PORT}`);
+  console.log(`Website running at http://localhost:${PORT}`);
   console.log(`Admin dashboard: http://localhost:${PORT}/admin (basic auth: ${process.env.ADMIN_USER || 'admin'} / set ADMIN_PASSWORD)`);
 });

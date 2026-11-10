@@ -1,4 +1,4 @@
-/* Summit Heating & Air — renders all business copy from /api/config. */
+/* Config-driven HVAC lead-gen site — renders all business copy from /api/config. */
 (function () {
   'use strict';
 
@@ -29,6 +29,8 @@
 
   function renderChrome(cfg) {
     document.title = cfg.name;
+    var metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc && cfg.hero && cfg.hero.subhead) metaDesc.setAttribute('content', cfg.hero.subhead);
     $('brand-name').textContent = cfg.name;
     $('hero-headline').textContent = cfg.hero.headline;
     $('hero-subhead').textContent = cfg.hero.subhead;
