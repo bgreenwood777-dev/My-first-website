@@ -1,0 +1,65 @@
+{
+  "business": {
+    "name": "Summit Heating & Air",
+    "shortName": "Summit",
+    "tagline": "Honest work, warm homes, cool summers.",
+    "hero": {
+      "headline": "Heating & Air Comfort, Done Right the First Time",
+      "subhead": "Licensed HVAC technicians serving the metro area with upfront pricing, same-day appointments, and a 100% satisfaction guarantee."
+    },
+    "phoneDisplay": "(555) 013-7200",
+    "phoneHref": "tel:+15550137200",
+    "email": "hello@summitheating.example",
+    "serviceAreas": ["Denver Metro", "Boulder", "Lakewood", "Arvada", "Aurora", "Westminster"],
+    "services": [
+      {
+        "title": "AC Repair",
+        "blurb": "Fast, honest fixes for any make or model — most cooling problems solved on the first visit."
+      },
+      {
+        "title": "Heating Repair",
+        "blurb": "Furnace and heat pump repairs with upfront pricing and a workmanship guarantee."
+      },
+      {
+        "title": "Installation",
+        "blurb": "High-efficiency systems sized right for your home, installed cleanly and to code."
+      },
+      {
+        "title": "Maintenance",
+        "blurb": "Seasonal tune-ups that lower energy bills and prevent mid-season breakdowns."
+      },
+      {
+        "title": "Emergency Service",
+        "blurb": "No heat or no cooling? We answer live and dispatch priority service, day or night."
+      }
+    ],
+    "trust": [
+      { "label": "Licensed & Insured" },
+      { "label": "Upfront, Flat-Rate Pricing" },
+      { "label": "Background-Checked Technicians" },
+      { "label": "100% Satisfaction Guarantee" }
+    ],
+    "testimonials": [
+      {
+        "quote": "Technician arrived on time, explained everything in plain English, and the final price matched the quote exactly. The house has never cooled faster.",
+        "name": "Dana R.",
+        "city": "Lakewood"
+      },
+      {
+        "quote": "Furnace quit on the coldest night of the year. Summit picked up on the first ring and had heat back before bedtime.",
+        "name": "Marcus T.",
+        "city": "Arvada"
+      },
+      {
+        "quote": "Smooth installation start to finish — tidy crew, a clear walkthrough of the new thermostat, and our energy bill dropped the very first month.",
+        "name": "Priya S.",
+        "city": "Denver"
+      }
+    ],
+    "colors": {
+      "primary": "#0f4c81",
+      "accent": "#f59e0b"
+    },
+    "demoMode": true
+  }
+}
