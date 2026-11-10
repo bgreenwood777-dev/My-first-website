@@ -17,6 +17,56 @@ function readConfig() {
   return JSON.parse(fs.readFileSync(CONFIG_PATH, 'utf8')).business;
 }
 
+// ---- Launch guard: refuse to serve real mode with placeholder content ----
+// When demoMode is false the site presents itself as a real business. Any
+// leftover placeholder (fictional 555 phone, .example email, sample reviews)
+// means the real business details are not in yet — fail closed: log loudly
+// and exit non-zero instead of serving a real-looking site with demo content.
+// The demo banner itself is never removed from the app; it simply stays hidden
+// in real mode, and the guard keeps a half-real config from ever being served.
+function findRealModeBlockers(cfg) {
+  var blockers = [];
+  var phoneDisplay = typeof cfg.phoneDisplay === 'string' ? cfg.phoneDisplay : '';
+  var displayDigits = phoneDisplay.replace(/\D/g, '').replace(/^1/, '');
+  if (displayDigits.indexOf('555') === 0) {
+    blockers.push('phoneDisplay "' + phoneDisplay + '" starts with 555 (placeholder number)');
+  }
+  var phoneHref = typeof cfg.phoneHref === 'string' ? cfg.phoneHref : '';
+  var hrefDigits = phoneHref.replace(/\D/g, '').replace(/^1/, '');
+  if (hrefDigits.indexOf('555') === 0) {
+    blockers.push('phoneHref "' + phoneHref + '" starts with 555 (placeholder number)');
+  }
+  var email = typeof cfg.email === 'string' ? cfg.email.toLowerCase() : '';
+  if (email.endsWith('.example')) {
+    blockers.push('email "' + cfg.email + '" ends with .example (placeholder address)');
+  }
+  if (cfg.testimonialsAreSamples === true) {
+    blockers.push('testimonialsAreSamples is true — reviews are still sample content');
+  }
+  return blockers;
+}
+
+var startupConfig = null;
+try {
+  startupConfig = readConfig();
+} catch (err) {
+  // Unreadable config keeps the existing per-request error behavior; this
+  // guard only applies when a config loads and declares demoMode=false.
+}
+if (startupConfig && startupConfig.demoMode === false) {
+  var launchBlockers = findRealModeBlockers(startupConfig);
+  if (launchBlockers.length > 0) {
+    console.error('==================================================================');
+    console.error('LAUNCH GUARD: demoMode is false, but placeholder content remains.');
+    launchBlockers.forEach(function (b) { console.error('  - ' + b); });
+    console.error('Refusing to serve in real mode. Put real business details in');
+    console.error('config/business.json (set testimonialsAreSamples: false once real');
+    console.error('reviews are in), or set demoMode back to true.');
+    console.error('==================================================================');
+    process.exit(1);
+  }
+}
+
 app.get('/api/config', (req, res) => {
   try {
     res.json(readConfig());

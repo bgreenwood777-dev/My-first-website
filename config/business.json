@@ -60,6 +60,7 @@
       "primary": "#0f4c81",
       "accent": "#f59e0b"
     },
-    "demoMode": true
+    "demoMode": true,
+    "testimonialsAreSamples": true
   }
 }

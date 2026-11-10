@@ -70,21 +70,28 @@
   }
 
   function renderTestimonials(cfg) {
+    var chip = (cfg.demoMode || cfg.testimonialsAreSamples) ? '<span class="chip">Sample</span>' : '';
     $('testimonials-grid').innerHTML = cfg.testimonials.map(function (t) {
       return '<article class="card review-card">' +
         '<p class="review-quote">“' + esc(t.quote) + '”</p>' +
         '<div class="review-meta">' +
         '<span class="review-who">' + esc(t.name) + ' <span class="review-city">· ' + esc(t.city) + '</span></span>' +
-        '<span class="chip">Sample</span>' +
+        chip +
         '</div>' +
         '</article>';
     }).join('');
   }
 
   function renderDemoMode(cfg) {
+    var demoIds = ['demo-banner', 'footer-demo-note', 'reviews-demo-note', 'footer-demo-copy'];
     if (cfg.demoMode) {
-      $('demo-banner').hidden = false;
-      $('footer-demo-note').hidden = false;
+      demoIds.forEach(function (id) { if ($(id)) $(id).hidden = false; });
+    } else {
+      /* Real mode: strip every demo string out of the DOM, not just hide it. */
+      demoIds.forEach(function (id) {
+        var el = $(id);
+        if (el && el.parentNode) el.parentNode.removeChild(el);
+      });
     }
   }
 
