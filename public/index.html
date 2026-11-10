@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Request service from Summit Heating & Air — AC repair, heating repair, installation, maintenance, and emergency HVAC service." />
+  <title>Summit Heating &amp; Air</title>
+  <link rel="stylesheet" href="/styles.css" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230f4c81'/%3E%3Cpath d='M6 22l6-9 4 6 3-4 7 7z' fill='%23f59e0b'/%3E%3C/svg%3E" />
+</head>
+<body>
+  <div id="demo-banner" class="demo-banner" hidden>Demo website — sample business configuration.</div>
+
+  <header class="site-header" id="site-header">
+    <a class="brand" href="#top" aria-label="Home">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 32 32" width="34" height="34" role="img" aria-hidden="true">
+          <rect width="32" height="32" rx="7" class="mark-bg"></rect>
+          <path d="M6 22l6-9 4 6 3-4 7 7z" class="mark-peak"></path>
+        </svg>
+      </span>
+      <span class="brand-name" id="brand-name">…</span>
+    </a>
+    <nav class="site-nav" aria-label="Main">
+      <a href="#services">Services</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#request" class="nav-cta">Get a Free Estimate</a>
+    </nav>
+    <a class="btn btn-call" id="header-phone" href="#">Call Now</a>
+  </header>
+
+  <main id="top">
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container hero-inner">
+        <h1 id="hero-headline">…</h1>
+        <p class="hero-sub" id="hero-subhead">…</p>
+        <div class="hero-ctas">
+          <a class="btn btn-primary" href="#request">Get a Free Estimate</a>
+          <a class="btn btn-ghost" id="hero-phone" href="#">Call Now</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section class="section" id="services">
+      <div class="container">
+        <p class="eyebrow">What we do</p>
+        <h2>Services</h2>
+        <p class="section-sub">Five core services, one call. Every job starts with a free, no-pressure estimate.</p>
+        <div class="cards" id="services-grid"><!-- filled from config --></div>
+      </div>
+    </section>
+
+    <!-- Trust strip -->
+    <section class="trust-strip" id="trust">
+      <div class="container trust-inner" id="trust-items"><!-- filled from config --></div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="section section-alt" id="reviews">
+      <div class="container">
+        <p class="eyebrow">Reviews</p>
+        <h2>What Homeowners Say</h2>
+        <p class="section-sub">Sample reviews shown for demonstration — replace with your real customer reviews.</p>
+        <div class="cards" id="testimonials-grid"><!-- filled from config --></div>
+      </div>
+    </section>
+
+    <!-- Request service -->
+    <section class="section" id="request">
+      <div class="container request-inner">
+        <div class="request-copy">
+          <p class="eyebrow">Request service</p>
+          <h2>Get a Free Estimate</h2>
+          <p class="section-sub">Tell us what you need and we'll call you back — usually within one business hour.</p>
+          <ul class="request-points">
+            <li>No obligation, no pressure</li>
+            <li>Upfront, flat-rate pricing</li>
+            <li>Same-day appointments available</li>
+          </ul>
+          <a class="request-phone" id="request-phone" href="#"></a>
+        </div>
+
+        <form class="request-form" id="lead-form" novalidate>
+          <input type="text" name="company" id="company" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
+          <div class="field">
+            <label for="fld-name">Full name <span class="req">*</span></label>
+            <input id="fld-name" name="name" type="text" autocomplete="name" required maxlength="100" placeholder="Jane Smith" />
+            <p class="field-error" data-error-for="name"></p>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="fld-phone">Phone <span class="req">*</span></label>
+              <input id="fld-phone" name="phone" type="tel" autocomplete="tel" required maxlength="25" placeholder="(555) 555-0100" />
+              <p class="field-error" data-error-for="phone"></p>
+            </div>
+            <div class="field">
+              <label for="fld-email">Email <span class="req">*</span></label>
+              <input id="fld-email" name="email" type="email" autocomplete="email" required maxlength="120" placeholder="jane@example.com" />
+              <p class="field-error" data-error-for="email"></p>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="fld-address">Service address <span class="req">*</span></label>
+            <input id="fld-address" name="address" type="text" autocomplete="street-address" required maxlength="200" placeholder="123 Main St, City" />
+            <p class="field-error" data-error-for="address"></p>
+          </div>
+
+          <div class="field">
+            <label for="fld-service">Type of service needed <span class="req">*</span></label>
+            <select id="fld-service" name="service" required>
+              <option value="">Select a service…</option>
+            </select>
+            <p class="field-error" data-error-for="service"></p>
+          </div>
+
+          <div class="field">
+            <label for="fld-message">Message <span class="opt">(optional)</span></label>
+            <textarea id="fld-message" name="message" rows="3" maxlength="1000" placeholder="Anything we should know?"></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-submit" id="submit-btn">Request My Free Estimate</button>
+          <p class="form-note">We only use your info to contact you about your request.</p>
+
+          <div class="form-success" id="form-success" hidden role="status">
+            <strong>Request received!</strong>
+            <p>Thanks — we have your details and will call you shortly to confirm your free estimate.</p>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <p class="footer-brand" id="footer-name">…</p>
+        <p class="footer-tag" id="footer-tagline"></p>
+        <p class="demo-note" id="footer-demo-note" hidden>Demo website — sample business configuration.</p>
+      </div>
+      <div>
+        <p class="footer-head">Contact</p>
+        <a id="footer-phone" href="#"></a><br />
+        <a id="footer-email" href="#"></a>
+      </div>
+      <div>
+        <p class="footer-head">Service areas</p>
+        <p id="footer-areas"></p>
+      </div>
+    </div>
+    <div class="container footer-legal">
+      <span id="footer-copy"></span> · Demo content shown for demonstration purposes.
+    </div>
+  </footer>
+
+  <script src="/app.js"></script>
+</body>
+</html>
